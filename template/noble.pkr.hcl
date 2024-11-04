@@ -28,13 +28,11 @@ source "proxmox-iso" "ubuntu-noble" {
     qemu_agent = true
 
     # VM Hard Disk Settings
-    scsi_controller = "virtio-scsi-pci"
-
     disks {
         disk_size = "25G"
         format = "raw"
         storage_pool = "local-lvm"
-        type = "virtio"
+        type = "scsi"
     }
 
     # VM Network Settings
