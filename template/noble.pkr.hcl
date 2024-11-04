@@ -16,9 +16,9 @@ source "proxmox-iso" "ubuntu-noble" {
     template_name = "eggplant-template"
     template_description = "Ubuntu Noble template for eggplanting"
 
-    # Download ISO (source:https://releases.ubuntu.com/22.04/ubuntu-22.04.3-live-server-amd64.iso)
-    iso_file = "local:iso/ubuntu-22.04.3-live-server-amd64.iso"
-    iso_checksum = "a4acfda10b18da50e2ec50ccaf860d7f20b389df8765611142305c0e911d16fd"
+    # Download ISO (source:https://releases.ubuntu.com/24.04/ubuntu-24.04.1-live-server-amd64.iso)
+    iso_file = "local:iso/ubuntu-24.04.1-live-server-amd64.iso"
+    iso_checksum = "e240e4b801f7bb68c20d1356b60968ad0c33a41d00d828e74ceb3364a0317be9"
     iso_storage_pool = "local"
     unmount_iso = true
 
