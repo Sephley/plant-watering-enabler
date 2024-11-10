@@ -65,8 +65,8 @@ source "proxmox-iso" "ubuntu-noble" {
     http_port_max = 8802
 
     # SSH credentials - these are not used in prod
-    ssh_username = "root"
-    ssh_password = "packer"
+    ssh_username = "test"
+    ssh_password = "test"
 
     # Raise the timeout in case installation takes longer
     ssh_timeout = "20m"
