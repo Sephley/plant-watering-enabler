@@ -1,2 +1,5 @@
 # Packer
 template/credentials.pkrvars.hcl
+
+# Terraform
+deployment/credentials.tfvars.hcl
