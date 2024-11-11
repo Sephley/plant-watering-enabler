@@ -3,7 +3,6 @@ This setup is heavily inspired by [awesome-compose](https://github.com/docker/aw
 Structure
 ```
 .
-├── compose.yaml
 ├── grafana
 │   └── datasource.yml
 ├── prometheus
