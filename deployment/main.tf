@@ -8,9 +8,9 @@ terraform {
 }
 
 provider "proxmox" {
-    proxmox_url = "${var.pm_api_url}"
-    username = "${var.pm_api_token_id}"
-    token = "${var.pm_api_token_secret}"
+    pm_api_url = "${var.pm_api_url}"
+    pm_api_token_id = "${var.pm_api_token_id}"
+    pm_api_token_secret = "${var.pm_api_token_secret}"
 }
 
 resource "proxmox_vm_qemu" "new_vm" {
