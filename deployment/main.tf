@@ -25,10 +25,8 @@ resource "proxmox_vm_qemu" "new_vm" {
   cores   = 2
   os_type = "cloud-init"
 
-  # this fixes boot loop
   scsihw                  = "virtio-scsi-pci"
-  bootdisk                = "scsi0"
-  cloudinit_cdrom_storage = "local-lvm"
+  hotplug                 = "network,disk,usb"
 
     disks {
         ide {
@@ -38,15 +36,18 @@ resource "proxmox_vm_qemu" "new_vm" {
                 }
             }
         }
-        virtio {
-            virtio0 {
+        scsi {
+            scsi0 {
                 disk {
                     size            = 32
                     cache           = "writeback"
+                    storage         = "XXLBOA_HDD4TB"
                 }
             }
         }
     }
+
+    bootdisk = "scsi0"
 
   serial {
     id   = 0
