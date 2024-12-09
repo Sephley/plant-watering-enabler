@@ -24,6 +24,8 @@ resource "proxmox_vm_qemu" "new_vm" {
   memory  = 4096
   cores   = 2
   os_type = "cloud-init"
+  ipconfig0 = "ip=192.168.10.220/24,gw=192.168.10.1"
+  nameserver = "1.1.1.1"
 
   scsihw                  = "virtio-scsi-pci"
   hotplug                 = "network,disk,usb"
@@ -58,4 +60,19 @@ resource "proxmox_vm_qemu" "new_vm" {
     model  = "virtio"
     bridge = "vmbr1"
   }
+
+  connection {
+    type        = "ssh"
+    user        = "${var.ssh_user}"
+    password    = "${var.ssh_password}"
+    host        = self.ssh_host
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt update",
+      "sudo apt install python3.12 python3-pip3 python3-flask"
+    ]
+  }
+
 }
