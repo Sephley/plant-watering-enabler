@@ -71,9 +71,9 @@ resource "proxmox_vm_qemu" "new_vm" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update",
-      "sudo apt install python3.12 python3-pip3 python3-flask",
+      "sudo apt install python3.12 python3-pip python3-flask",
       "sudo mkdir /opt/app",
-      "sudo wget https://github.com/aznaveeck/eggplanter-website/releases/download/v0.1.3/app.py -O /opt/app/",
+      "sudo wget -P /opt/app/ https://github.com/aznaveeck/eggplanter-website/releases/download/v0.1.3/app.py",
       "sudo chmod +x /opt/app/app.py",
       "python3 /opt/app/app.py"
     ]
