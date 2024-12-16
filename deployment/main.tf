@@ -8,9 +8,9 @@ terraform {
 }
 
 provider "proxmox" {
-    pm_api_url = "${var.pm_api_url}"
-    pm_api_token_id = "${var.pm_api_token_id}"
-    pm_api_token_secret = "${var.pm_api_token_secret}"
+  pm_api_url = "${var.pm_api_url}"
+  pm_api_token_id = "${var.pm_api_token_id}"
+  pm_api_token_secret = "${var.pm_api_token_secret}"
 }
 
 resource "proxmox_vm_qemu" "new_vm" {
@@ -21,35 +21,35 @@ resource "proxmox_vm_qemu" "new_vm" {
 
   agent = 1
 
-  memory  = 4096
-  cores   = 2
-  os_type = "cloud-init"
-  ipconfig0 = "ip=192.168.10.220/24,gw=192.168.10.1"
+  memory     = 4096
+  cores      = 2
+  os_type    = "cloud-init"
+  ipconfig0  = "ip=192.168.10.220/24,gw=192.168.10.1"
   nameserver = "1.1.1.1"
 
-  scsihw                  = "virtio-scsi-pci"
-  hotplug                 = "network,disk,usb"
+  scsihw  = "virtio-scsi-pci"
+  hotplug = "network,disk,usb"
 
-    disks {
-        ide {
-            ide3 {
-                cloudinit {
-                    storage = "local-lvm"
-                }
-            }
+  disks {
+    ide {
+      ide3 {
+        cloudinit {
+          storage = "local-lvm"
         }
-        scsi {
-            scsi0 {
-                disk {
-                    size            = 32
-                    cache           = "writeback"
-                    storage         = "XXLBOA_HDD4TB"
-                }
-            }
-        }
+      }
     }
+    scsi {
+      scsi0 {
+        disk {
+          size    = 32
+          cache   = "writeback"
+          storage = "XXLBOA_HDD4TB"
+         }
+      }
+    }
+  }
 
-    bootdisk = "scsi0"
+  bootdisk = "scsi0"
 
   serial {
     id   = 0
@@ -62,10 +62,10 @@ resource "proxmox_vm_qemu" "new_vm" {
   }
 
   connection {
-    type        = "ssh"
-    user        = "${var.ssh_user}"
-    password    = "${var.ssh_password}"
-    host        = self.ssh_host
+    type     = "ssh"
+    user     = "${var.ssh_user}"
+    password = "${var.ssh_password}"
+    host     = self.ssh_host
   }
 
   provisioner "remote-exec" {
