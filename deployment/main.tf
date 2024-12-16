@@ -43,7 +43,7 @@ resource "proxmox_vm_qemu" "new_vm" {
         disk {
           size    = 32
           cache   = "writeback"
-          storage = "XXLBOA_HDD4TB"
+          storage = "MIDBOA_SSD500"
          }
       }
     }
