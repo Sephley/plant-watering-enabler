@@ -1,22 +1,24 @@
+# Proxmox
 variable "pm_api_url" {
-    type = string
+  type = string
 }
 
 variable "pm_api_token_id" {
-    type = string
+  type = string
 }
 
 variable "pm_api_token_secret" {
-    type = string
-    sensitive = true
+  type = string
+  sensitive = true
 }
 
+# SSH
 variable "ssh_user" {
-    type = string
-    sensitive = true
+  type = string
+  sensitive = true
 }
 
 variable "ssh_password" {
-    type = string
-    sensitive = true
+  type = string
+  sensitive = true
 }
