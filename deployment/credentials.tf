@@ -22,3 +22,22 @@ variable "ssh_password" {
   type = string
   sensitive = true
 }
+
+# Cloudflare
+variable "cf_auth_email" {
+  type = string
+}
+
+variable "cf_zone_id" {
+  type = string
+  sensitive = true
+}
+
+variable "cf_value" {
+  type = string
+}
+
+variable "cf_global_api_key" {
+  type = string
+  sensitive = true
+}
