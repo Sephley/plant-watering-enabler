@@ -4,13 +4,22 @@ terraform {
       source  = "telmate/proxmox"
       version = "3.0.1-rc4"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.0"
+    }
   }
 }
 
 provider "proxmox" {
-  pm_api_url = "${var.pm_api_url}"
-  pm_api_token_id = "${var.pm_api_token_id}"
+  pm_api_url          = "${var.pm_api_url}"
+  pm_api_token_id     = "${var.pm_api_token_id}"
   pm_api_token_secret = "${var.pm_api_token_secret}"
+}
+
+provider "cloudflare" {
+  api_key = "${var.cf_global_api_key}"
+  email   = "${var.cf_auth_email}"
 }
 
 resource "proxmox_vm_qemu" "new_vm" {
@@ -78,5 +87,12 @@ resource "proxmox_vm_qemu" "new_vm" {
       "python3 /opt/app/app.py"
     ]
   }
+}
 
+resource "cloudflare_dns_record" "eggplant" {
+  zone_id = var.cf_zone_id
+  name    = "eggplant"
+  value   = var.cf_value
+  type    = "CNAME"
+  ttl     = 3600
 }
