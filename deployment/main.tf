@@ -89,10 +89,10 @@ resource "proxmox_vm_qemu" "new_vm" {
   }
 }
 
-resource "cloudflare_dns_record" "eggplant" {
+resource "cloudflare_record" "eggplant" {
   zone_id = var.cf_zone_id
   name    = "eggplant"
-  value   = var.cf_value
+  content   = var.cf_content
   type    = "CNAME"
   ttl     = 3600
 }

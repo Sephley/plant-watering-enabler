@@ -33,7 +33,7 @@ variable "cf_zone_id" {
   sensitive = true
 }
 
-variable "cf_value" {
+variable "cf_content" {
   type = string
 }
 
