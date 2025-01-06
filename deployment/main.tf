@@ -83,12 +83,12 @@ resource "proxmox_vm_qemu" "new_vm" {
       "sudo apt install python3.12 python3-pip python3-flask -y",
       "sudo mkdir /opt/app",
       "sudo mkdir /opt/app/templates",
+      "sudo mkdir /opt/app/static",
       "sudo wget -P /opt/app/ https://github.com/aznaveeck/eggplanter-website/releases/download/v0.2.0/app.py",
       "sudo wget -P /opt/app/ https://github.com/aznaveeck/eggplanter-website/releases/download/v0.2.0/data.csv",
       "sudo wget -P /opt/app/templates https://github.com/aznaveeck/eggplanter-website/releases/download/v0.2.0/dashboard.html",
       "sudo chmod +x /opt/app/app.py",
-      "python3 /opt/app/app.py &",
-      "exit 0"
+      "python3 /opt/app/app.py",
     ]
   }
 }
